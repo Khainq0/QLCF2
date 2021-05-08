@@ -156,10 +156,31 @@ namespace PhanMemQLCafe
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fAdmin f = new fAdmin();
+
             f.InsertFood += f_InsertFood;
             f.DeleteFood += f_DeleteFood;
             f.UpdateFood += f_UpdateFood;
+
+            f.InsertCategory += f_InsertCategory;
+            f.UpdateCategory += f_UpdateCategory;
+            f.DeleteCategory += f_DeleteCategory;
+
             f.ShowDialog();
+        }
+
+        private void f_DeleteCategory(object sender, EventArgs e)
+        {
+            LoadCategory();
+        }
+
+        private void f_UpdateCategory(object sender, EventArgs e)
+        {
+            LoadCategory();
+        }
+
+        private void f_InsertCategory(object sender, EventArgs e)
+        {
+            LoadCategory();
         }
 
         private void f_UpdateFood(object sender, EventArgs e)

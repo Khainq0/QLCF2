@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +16,7 @@ namespace PhanMemQLCafe
     public partial class fAdmin : Form
     {
         BindingSource foodList = new BindingSource();
-
+        BindingSource categoryList = new BindingSource();
         public fAdmin()
         {
             InitializeComponent();
@@ -32,6 +32,7 @@ namespace PhanMemQLCafe
             AddFoodBinding();
 
             //category
+            dtgvCategory.DataSource = categoryList;
             LoadListCategory();
             AddCategoryBinding();
 
@@ -115,7 +116,7 @@ namespace PhanMemQLCafe
 
         void LoadListCategory()
         {
-            dtgvCategory.DataSource = FoodDAO.Instance.GetListCategory();
+            categoryList.DataSource = FoodDAO.Instance.GetListCategory();
         }
 
         void LoadListTable()
@@ -183,7 +184,7 @@ namespace PhanMemQLCafe
                     cbFoodCategory.SelectedIndex = index;
                 }
             }
-            catch {  }
+            catch { }
         }
 
         private void btnAddFood_Click(object sender, EventArgs e)
@@ -212,13 +213,16 @@ namespace PhanMemQLCafe
             float price = (float)nmFoodPrice.Value;
             int foodID = Convert.ToInt32(txbFoodID.Text);
 
-            if (FoodDAO.Instance.EditFood(foodID, name, categoryID, price))
+            if (MessageBox.Show("Bạn có muốn sửa danh mục không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Sửa món thành công!");
-                LoadListFood();
-                LoadFoodListByCategoryID(categoryID);
-                if (updateFood != null)
-                    updateFood(this, new EventArgs());
+                if (FoodDAO.Instance.EditFood(foodID, name, categoryID, price))
+                {
+                    MessageBox.Show("Sửa món thành công!");
+                    LoadListFood();
+                    //LoadFoodListByCategoryID(categoryID);
+                    if (updateFood != null)
+                        updateFood(this, new EventArgs());
+                }
             }
             else
             {
@@ -226,10 +230,10 @@ namespace PhanMemQLCafe
             }
         }
 
-        private void LoadFoodListByCategoryID(int categoryID)
-        {
-            throw new NotImplementedException();
-        }
+        //private void LoadFoodListByCategoryID(int categoryID)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private void btnDeleteFood_Click(object sender, EventArgs e)
         {
@@ -278,18 +282,91 @@ namespace PhanMemQLCafe
         {
             string name = txbCategoryName.Text;
             int categoryID = Convert.ToInt32(txbCategoryID.Text);
-            
+
             if (CategoryDAO.Instance.AddCategory(categoryID, name))
             {
                 MessageBox.Show("Thêm danh mục thành công!");
+                LoadCategoryIntoCombobox(cbFoodCategory);
                 LoadListCategory();
+                LoadCategoryIntoCombobox(cbFoodCategory);
+                if (insertCategory != null)
+                    insertCategory(this, new EventArgs());
             }
+
             else
             {
                 MessageBox.Show("Thêm không thành công.\nDanh mục đã tồn tại!");
-            }    
+            }
+        }
+
+        private void btnEditCategory_Click(object sender, EventArgs e)
+        {
+            string name = txbCategoryName.Text;
+            int categoryID = Convert.ToInt32(txbCategoryID.Text);
+
+            if (MessageBox.Show("Bạn có muốn sửa danh mục không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                if (CategoryDAO.Instance.EditCategory(categoryID, name))
+                {
+                    MessageBox.Show("Sửa danh mục thành công!");
+                    LoadCategoryIntoCombobox(cbFoodCategory);
+                    LoadListCategory();
+                    LoadCategoryIntoCombobox(cbFoodCategory);
+                    if (updateCategory != null)
+                        updateCategory(this, new EventArgs());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sửa danh mục không thành công!");
+            }
+        }
+
+        private void btnDeleteCategory_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txbCategoryID.Text);
+
+            if (MessageBox.Show("Bạn có muốn xóa danh mục không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                if (CategoryDAO.Instance.DeleteCategory(id))
+                {
+                    MessageBox.Show("Xóa danh mục thành công!");
+                    LoadListCategory();
+                    LoadCategoryIntoCombobox(cbFoodCategory);
+                    LoadListFood();
+                    if (deleteCategory != null)
+                        deleteCategory(this, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Xóa danh mục không thành công!");
+                }
+            }
+        }
+
+        private event EventHandler insertCategory;
+        public event EventHandler InsertCategory
+        {
+            add { insertCategory += value; }
+            remove { insertCategory -= value; }
+        }
+
+        private event EventHandler updateCategory;
+        public event EventHandler UpdateCategory
+        {
+            add { updateCategory += value; }
+            remove { updateCategory -= value; }
+        }
+
+        private event EventHandler deleteCategory;
+        public event EventHandler DeleteCategory
+        {
+            add { deleteCategory += value; }
+            remove { deleteCategory -= value; }
         }
 
         #endregion
+
+
     }
 }

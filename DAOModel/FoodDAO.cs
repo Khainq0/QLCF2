@@ -145,7 +145,7 @@ namespace PhanMemQLCafe.DAOModel
         {
             List<Category> list = new List<Category>();
 
-            string query = "SELECT * FROM dbo.FoodCategory";
+            string query = "SELECT * FROM dbo.FoodCategory ORDER BY CategoryID";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -157,6 +157,11 @@ namespace PhanMemQLCafe.DAOModel
             }
 
             return list;
+        }
+
+        public void DeleteFoodByCategoryID(int id)
+        {
+            DataProvider.Instance.ExecuteQuery("DELETE FROM dbo.Food WHERE CategoryID = " +id);
         }
     }
 }

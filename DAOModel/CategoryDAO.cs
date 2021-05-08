@@ -103,9 +103,18 @@ namespace PhanMemQLCafe.DAOModel
             return false;
         }
 
-        public bool Edit(int id, string name)
+        public bool EditCategory(int id, string name)
         {
-            string query = string.Format("UPDATE dbo.FoodCategory SET name = N'{0}' WHERE CategoryID = {1}", name, id);
+            string query = string.Format("UPDATE dbo.FoodCategory SET Name = N'{0}' WHERE CategoryID = {1}", name, id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool DeleteCategory(int id)
+        {
+            FoodDAO.Instance.DeleteFoodByCategoryID(id);
+            string query = string.Format("DELETE FROM dbo.FoodCategory WHERE CategoryID = {0}", id);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
