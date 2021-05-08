@@ -105,10 +105,15 @@ namespace PhanMemQLCafe.DAOModel
 
         public bool EditCategory(int id, string name)
         {
-            string query = string.Format("UPDATE dbo.FoodCategory SET Name = N'{0}' WHERE CategoryID = {1}", name, id);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            int count = CategoryDAO.Instance.CheckExistCategoryName(name);
 
-            return result > 0;
+            if (count == 0)
+            {
+                string query = string.Format("UPDATE dbo.FoodCategory SET Name = N'{0}' WHERE CategoryID = {1}", name, id);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            return false;
         }
 
         public bool DeleteCategory(int id)

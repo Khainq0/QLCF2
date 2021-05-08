@@ -54,5 +54,10 @@ namespace PhanMemQLCafe.DAOModel
         {
             DataProvider.Instance.ExecuteQuery("DELETE dbo.BillInfo WHERE FoodID = " + id);
         }
+
+        public void DeleteBillInfoByTableID(int id)
+        {
+            DataProvider.Instance.ExecuteQuery("DELETE FROM dbo.BillInfo WHERE BillID = (SELECT BillID FROM dbo.Bill WHERE TableID = "+id+")");
+        }
     }
 }

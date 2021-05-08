@@ -71,5 +71,66 @@ namespace PhanMemQLCafe.DAOModel
 
             return list;
         }
+
+        public int GetTableIDByTableName(string name)
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM FoodTable WHERE Name = N'" + name + "' ");
+
+            if (data.Rows.Count > 0)
+            {
+                Table table = new Table(data.Rows[0]);
+                return table.ID;
+            }
+            return -1;
+        }
+
+        public int CheckExistTableName(string name)
+        {
+            try
+            {
+                int id = TableDAO.Instance.GetTableIDByTableName(name);
+                return (int)DataProvider.Instance.ExecuteScalar("SELECT COUNT(*) FROM dbo.FoodTable WHERE TableID = " + id + "");
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        public bool AddTable(int id, string name, string status)
+        {
+            int count = TableDAO.Instance.CheckExistTableName(name);
+
+            if(count == 0)
+            {
+                string query = string.Format("INSERT INTO dbo.FoodTable(Name, status) VALUES (N'{0}', N'{1}')", name, status);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            return false;
+        }
+
+        public bool EditTable(int id, string name)
+        {
+            int count = TableDAO.Instance.CheckExistTableName(name);
+
+            if (count == 0)
+            {
+                string query = string.Format("UPDATE dbo.FoodTable SET Name = N'{0}' WHERE TableID = {1}", name, id);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            return false;
+        }
+
+        public bool DeleteCategory(int id)
+        {
+            BillInfoDAO.Instance.DeleteBillInfoByTableID(id);
+            BillDAO.Instance.DeleteBillByTableID(id);
+            string query = string.Format("DELETE FROM dbo.FoodTable WHERE TableID = {0}", id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
     }
 }

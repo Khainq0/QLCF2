@@ -125,5 +125,10 @@ namespace PhanMemQLCafe.DAOModel
         {
             return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListBillByDate @checkIn , @checkOut", new object[] { checkIn, checkOut});
         }
+
+        public void DeleteBillByTableID(int id)
+        {
+            DataProvider.Instance.ExecuteQuery("DELETE FROM dbo.Bill WHERE TableID = " + id);
+        }
     }
 }

@@ -165,7 +165,26 @@ namespace PhanMemQLCafe
             f.UpdateCategory += f_UpdateCategory;
             f.DeleteCategory += f_DeleteCategory;
 
+            f.InsertTable += f_InsertTable;
+            f.UpdateTable += f_UpdateTable;
+            f.DeleteTable += f_DeleteTable;
+
             f.ShowDialog();
+        }
+
+        private void f_DeleteTable(object sender, EventArgs e)
+        {
+            LoadTable();
+        }
+
+        private void f_UpdateTable(object sender, EventArgs e)
+        {
+            LoadTable();
+        }
+
+        private void f_InsertTable(object sender, EventArgs e)
+        {
+            LoadTable();
         }
 
         private void f_DeleteCategory(object sender, EventArgs e)

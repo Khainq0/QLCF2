@@ -107,10 +107,15 @@ namespace PhanMemQLCafe.DAOModel
 
         public bool EditFood(int foodID, string name, int categoryID, float price)
         {
-            string query = string.Format("UPDATE dbo.Food SET name = N'{0}', CategoryID = {1}, Price = {2} WHERE FoodID = {3}", name, categoryID, price, foodID);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            int count = FoodDAO.Instance.CheckExistFoodName(name);
 
-            return result > 0;
+            if (count == 0)
+            {
+                string query = string.Format("UPDATE dbo.Food SET name = N'{0}', CategoryID = {1}, Price = {2} WHERE FoodID = {3}", name, categoryID, price, foodID);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            return false;      
         }
 
         public bool DeleteFood(int foodID)

@@ -17,6 +17,7 @@ namespace PhanMemQLCafe
     {
         BindingSource foodList = new BindingSource();
         BindingSource categoryList = new BindingSource();
+        BindingSource tableList = new BindingSource();
         public fAdmin()
         {
             InitializeComponent();
@@ -37,8 +38,10 @@ namespace PhanMemQLCafe
             AddCategoryBinding();
 
             //table
+            dtgvTable.DataSource = tableList;
             LoadListTable();
             AddTableBinding();
+            LoadTableStatusIntoCombobox(cbTableStatus);
 
             //account
             LoadListAccount();
@@ -72,6 +75,12 @@ namespace PhanMemQLCafe
             cb.DisplayMember = "Name";
         }
 
+        void LoadTableStatusIntoCombobox(ComboBox cb)
+        {
+            cbTableStatus.DataSource = TableDAO.Instance.GetListTable();
+            cb.DisplayMember = "Status";
+        }
+
         void AddAccountBinding()
         {
             txbUserName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
@@ -81,7 +90,7 @@ namespace PhanMemQLCafe
         void AddTableBinding()
         {
             txbTableID.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "ID", true, DataSourceUpdateMode.Never));
-            txbTableName.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "ID", true, DataSourceUpdateMode.Never));
+            txbTableName.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "Name", true, DataSourceUpdateMode.Never));
         }
 
         void AddCategoryBinding()
@@ -121,7 +130,7 @@ namespace PhanMemQLCafe
 
         void LoadListTable()
         {
-            dtgvTable.DataSource = TableDAO.Instance.GetListTable();
+            tableList.DataSource = TableDAO.Instance.GetListTable();
         }
 
         void LoadListAccount()
@@ -229,11 +238,6 @@ namespace PhanMemQLCafe
                 MessageBox.Show("Sửa món không thành công!");
             }
         }
-
-        //private void LoadFoodListByCategoryID(int categoryID)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         private void btnDeleteFood_Click(object sender, EventArgs e)
         {
@@ -365,6 +369,88 @@ namespace PhanMemQLCafe
             remove { deleteCategory -= value; }
         }
 
+
+        private void btnAddTable_Click(object sender, EventArgs e)
+        {
+            string name = txbTableName.Text;
+            int id = Convert.ToInt32(txbTableID.Text);
+            string status = cbTableStatus.Text;
+
+            if (TableDAO.Instance.AddTable(id, name, status))
+            {      
+                LoadListTable();
+                if (insertTable != null)
+                    insertTable(this, new EventArgs());
+                MessageBox.Show("Thêm bàn thành công!");
+            }
+            else
+            {
+                MessageBox.Show("Thêm bàn không thành công.\nBàn đã tồn tại!");
+            }    
+        }
+
+        private void btnEditTable_Click(object sender, EventArgs e)
+        {
+            string name = txbTableName.Text;
+            int id = Convert.ToInt32(txbTableID.Text);
+
+            if (MessageBox.Show("Bạn có muốn cập nhật bàn không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                if (TableDAO.Instance.EditTable(id, name))
+                {
+                    LoadListTable();
+                    if (updateTable != null)
+                        updateTable(this, new EventArgs());
+                    MessageBox.Show("Cập nhật bàn thành công thành công!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sửa danh mục không thành công!");
+            }
+        }
+
+        private void btnDeleteTable_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txbTableID.Text);
+
+            if (MessageBox.Show("Bạn có muốn xóa bàn không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                if (TableDAO.Instance.DeleteCategory(id))
+                {
+                    LoadListTable();
+                    LoadListBillByDate(dtpkFromDate.Value, dtpkToday.Value);
+                    if (deleteTable != null)
+                        deleteTable(this, new EventArgs());
+                    MessageBox.Show("Xóa bàn thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Xóa danh mục không thành công!");
+                }
+            }
+        }
+
+        private event EventHandler insertTable;
+        public event EventHandler InsertTable
+        {
+            add { insertTable += value; }
+            remove { insertTable -= value; }
+        }
+
+        private event EventHandler updateTable;
+        public event EventHandler UpdateTable
+        {
+            add { updateTable += value; }
+            remove { updateTable -= value; }
+        }
+
+        private event EventHandler deleteTable;
+        public event EventHandler DeleteTable
+        {
+            add { deleteTable += value; }
+            remove { deleteTable -= value; }
+        }
         #endregion
 
 
