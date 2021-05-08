@@ -101,7 +101,6 @@ namespace PhanMemQLCafe
             this.panel23 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel24 = new System.Windows.Forms.Panel();
-            this.cbAccountType = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
             this.txbDisplayName = new System.Windows.Forms.TextBox();
@@ -114,6 +113,7 @@ namespace PhanMemQLCafe
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
+            this.nmAccountType = new System.Windows.Forms.NumericUpDown();
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -153,6 +153,7 @@ namespace PhanMemQLCafe
             this.panel26.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmAccountType)).BeginInit();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -954,25 +955,17 @@ namespace PhanMemQLCafe
             this.btnResetPassword.TabIndex = 5;
             this.btnResetPassword.Text = "Đặt lại mật khẩu";
             this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // panel24
             // 
-            this.panel24.Controls.Add(this.cbAccountType);
+            this.panel24.Controls.Add(this.nmAccountType);
             this.panel24.Controls.Add(this.label9);
             this.panel24.Location = new System.Drawing.Point(3, 133);
             this.panel24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(343, 59);
             this.panel24.TabIndex = 4;
-            // 
-            // cbAccountType
-            // 
-            this.cbAccountType.FormattingEnabled = true;
-            this.cbAccountType.Location = new System.Drawing.Point(153, 18);
-            this.cbAccountType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbAccountType.Name = "cbAccountType";
-            this.cbAccountType.Size = new System.Drawing.Size(185, 20);
-            this.cbAccountType.TabIndex = 1;
             // 
             // label9
             // 
@@ -1027,7 +1020,6 @@ namespace PhanMemQLCafe
             this.txbUserName.Location = new System.Drawing.Point(153, 17);
             this.txbUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbUserName.Name = "txbUserName";
-            this.txbUserName.ReadOnly = true;
             this.txbUserName.Size = new System.Drawing.Size(185, 19);
             this.txbUserName.TabIndex = 1;
             // 
@@ -1065,6 +1057,7 @@ namespace PhanMemQLCafe
             this.btnShowAccount.Text = "Xem";
             this.btnShowAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnShowAccount.UseVisualStyleBackColor = false;
+            this.btnShowAccount.Click += new System.EventHandler(this.btnShowAccount_Click);
             // 
             // btnEditAccount
             // 
@@ -1078,6 +1071,7 @@ namespace PhanMemQLCafe
             this.btnEditAccount.Text = "Sửa";
             this.btnEditAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditAccount.UseVisualStyleBackColor = false;
+            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // btnDeleteAccount
             // 
@@ -1104,6 +1098,14 @@ namespace PhanMemQLCafe
             this.btnAddAccount.Text = "Thêm";
             this.btnAddAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddAccount.UseVisualStyleBackColor = false;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
+            // 
+            // nmAccountType
+            // 
+            this.nmAccountType.Location = new System.Drawing.Point(153, 20);
+            this.nmAccountType.Name = "nmAccountType";
+            this.nmAccountType.Size = new System.Drawing.Size(49, 19);
+            this.nmAccountType.TabIndex = 1;
             // 
             // fAdmin
             // 
@@ -1169,6 +1171,7 @@ namespace PhanMemQLCafe
             this.panel27.ResumeLayout(false);
             this.panel27.PerformLayout();
             this.panel28.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nmAccountType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1257,7 +1260,7 @@ namespace PhanMemQLCafe
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnAddAccount;
         private System.Windows.Forms.DataGridView dtgvAccount;
-        private System.Windows.Forms.ComboBox cbAccountType;
         private System.Windows.Forms.Button btnResetPassword;
+        private System.Windows.Forms.NumericUpDown nmAccountType;
     }
 }

@@ -36,14 +36,14 @@ namespace PhanMemQLCafe.DAOModel
         {
             string query = "USP_Login @userName , @password";
 
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, password});
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, password });
 
             return result.Rows.Count > 0;
         }
 
         public Account GetAccountByUserName(string userName)
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from Staff where UserName = '"+userName+"' ");
+            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from Staff where UserName = '" + userName + "' ");
 
             foreach (DataRow item in data.Rows)
             {
@@ -74,6 +74,47 @@ namespace PhanMemQLCafe.DAOModel
             }
 
             return list;
+        }
+
+        public int CheckExistAccount(string userName)
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("SELECT COUNT(*) FROM dbo.Staff WHERE UserName = '" + userName + "'");
+
+        }
+
+        public bool AddAccount(string userName, string name, int type)
+        {
+            int count = AccountDAO.Instance.CheckExistAccount(userName);
+
+            if (count == 0)
+            {
+                string query = string.Format("INSERT dbo.Staff(UserName, Name, isManager) VALUES('{0}', N'{1}', {2})", userName, name, type);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            return false;
+        }
+
+        public bool EditAccount(string userName, string name, int type)
+        {
+            string query = string.Format("UPDATE dbo.Staff SET Name = N'{0}', isManager = {1} WHERE UserName = '{2}'", name, type, userName);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+
+        public bool DeleteAccount(string userName)
+        {
+            string query = string.Format("DELETE FROM dbo.Staff WHERE UserName = '{0}'", userName);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool ResetPassword(string userName)
+        {
+            string query = string.Format("UPDATE dbo.Staff SET PassWord = '1' where UserName = '{0}'", userName);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
         }
     }
 }

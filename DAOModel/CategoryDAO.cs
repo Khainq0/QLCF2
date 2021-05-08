@@ -67,7 +67,7 @@ namespace PhanMemQLCafe.DAOModel
 
         public int GetCategoryIDByCategoryName(string name)
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM FoodCategory WHERE Name = N'"+ name +"' ");
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM FoodCategory WHERE Name = N'" + name + "' ");
 
             if (data.Rows.Count > 0)
             {
@@ -105,15 +105,9 @@ namespace PhanMemQLCafe.DAOModel
 
         public bool EditCategory(int id, string name)
         {
-            int count = CategoryDAO.Instance.CheckExistCategoryName(name);
-
-            if (count == 0)
-            {
-                string query = string.Format("UPDATE dbo.FoodCategory SET Name = N'{0}' WHERE CategoryID = {1}", name, id);
-                int result = DataProvider.Instance.ExecuteNonQuery(query);
-                return result > 0;
-            }
-            return false;
+            string query = string.Format("UPDATE dbo.FoodCategory SET Name = N'{0}' WHERE CategoryID = {1}", name, id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
         }
 
         public bool DeleteCategory(int id)

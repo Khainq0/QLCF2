@@ -18,6 +18,7 @@ namespace PhanMemQLCafe
         BindingSource foodList = new BindingSource();
         BindingSource categoryList = new BindingSource();
         BindingSource tableList = new BindingSource();
+        BindingSource accountList = new BindingSource();
         public fAdmin()
         {
             InitializeComponent();
@@ -44,17 +45,13 @@ namespace PhanMemQLCafe
             LoadTableStatusIntoCombobox(cbTableStatus);
 
             //account
+            dtgvAccount.DataSource = accountList;
             LoadListAccount();
             AddAccountBinding();
             FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void label8_Click(object sender, EventArgs e)
-        {
-            //null
-        }
-
-        private void button4_Click(object sender, EventArgs e)
         {
             //null
         }
@@ -85,6 +82,7 @@ namespace PhanMemQLCafe
         {
             txbUserName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
             txbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "Name", true, DataSourceUpdateMode.Never));
+            nmAccountType.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "isManager", true, DataSourceUpdateMode.Never));
         }
 
         void AddTableBinding()
@@ -135,7 +133,64 @@ namespace PhanMemQLCafe
 
         void LoadListAccount()
         {
-            dtgvAccount.DataSource = AccountDAO.Instance.GetListAccount();
+            accountList.DataSource = AccountDAO.Instance.GetListAccount();
+        }
+
+        void InsertAccount(string userName, string name, int type)
+        {
+            if (AccountDAO.Instance.AddAccount(userName, name, type))
+            {
+                MessageBox.Show("Thêm tài khoản thành công!");
+                LoadListAccount();
+            }
+            else
+            {
+                MessageBox.Show("Tài khoản đã tài tại.\nThêm tài khoản không thành công!");
+            }        
+        }
+        void UpdateAccount(string userName, string name, int type)
+        {
+            if (AccountDAO.Instance.EditAccount(userName, name, type))
+            {
+                MessageBox.Show("Cập nhật tài khoản thành công!");
+                LoadListAccount();
+            }
+            else
+            {
+                MessageBox.Show("Tài khoản đã tồn tại.\nCập nhật tài khoản không thành công!");
+            }    
+        }
+
+        void deleteAccount(string userName)
+        {
+            if (MessageBox.Show("Bạn có muốn xóa tài khoản không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                if (AccountDAO.Instance.DeleteAccount(userName))
+                {
+                    LoadListAccount();
+                    MessageBox.Show("Xóa tài khoản thành công!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Xóa tài khoản không thành công!");
+            }
+        }
+
+        void ResetPass(string userName)
+        {
+            if (MessageBox.Show("Bạn có cập nhật lại mật khẩu không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                if (AccountDAO.Instance.ResetPassword(userName))
+                {
+                    MessageBox.Show("Đặt lại mật khẩu thành công!");
+                }
+            }              
+            else
+            {
+                MessageBox.Show("Đặt lại mật khẩu không thành công!");
+            }
+            LoadListAccount();
         }
 
         #endregion
@@ -196,6 +251,8 @@ namespace PhanMemQLCafe
             catch { }
         }
 
+
+        //Quản lí đồ uống
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             string name = txbFoodName.Text;
@@ -222,20 +279,23 @@ namespace PhanMemQLCafe
             float price = (float)nmFoodPrice.Value;
             int foodID = Convert.ToInt32(txbFoodID.Text);
 
-            if (MessageBox.Show("Bạn có muốn sửa danh mục không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                if (FoodDAO.Instance.EditFood(foodID, name, categoryID, price))
+                if (MessageBox.Show("Bạn có muốn sửa danh mục không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    MessageBox.Show("Sửa món thành công!");
-                    LoadListFood();
-                    //LoadFoodListByCategoryID(categoryID);
-                    if (updateFood != null)
-                        updateFood(this, new EventArgs());
+                    if (FoodDAO.Instance.EditFood(foodID, name, categoryID, price))
+                    {
+                        MessageBox.Show("Sửa món thành công!");
+                        LoadListFood();
+                        //LoadFoodListByCategoryID(categoryID);
+                        if (updateFood != null)
+                            updateFood(this, new EventArgs());
+                    }
                 }
             }
-            else
+            catch
             {
-                MessageBox.Show("Sửa món không thành công!");
+                MessageBox.Show("Món đã tồn tại.\nSửa món không thành công!");
             }
         }
 
@@ -282,6 +342,7 @@ namespace PhanMemQLCafe
         }
 
 
+        //Quản lí danh mục
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             string name = txbCategoryName.Text;
@@ -308,21 +369,24 @@ namespace PhanMemQLCafe
             string name = txbCategoryName.Text;
             int categoryID = Convert.ToInt32(txbCategoryID.Text);
 
-            if (MessageBox.Show("Bạn có muốn sửa danh mục không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                if (CategoryDAO.Instance.EditCategory(categoryID, name))
+                if (MessageBox.Show("Bạn có muốn sửa danh mục không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    MessageBox.Show("Sửa danh mục thành công!");
-                    LoadCategoryIntoCombobox(cbFoodCategory);
-                    LoadListCategory();
-                    LoadCategoryIntoCombobox(cbFoodCategory);
-                    if (updateCategory != null)
-                        updateCategory(this, new EventArgs());
+                    if (CategoryDAO.Instance.EditCategory(categoryID, name))
+                    {
+                        MessageBox.Show("Sửa danh mục thành công!");
+                        LoadCategoryIntoCombobox(cbFoodCategory);
+                        LoadListCategory();
+                        LoadCategoryIntoCombobox(cbFoodCategory);
+                        if (updateCategory != null)
+                            updateCategory(this, new EventArgs());
+                    }
                 }
             }
-            else
+            catch
             {
-                MessageBox.Show("Sửa danh mục không thành công!");
+                MessageBox.Show("Danh mục đã tồn tại.\nSửa danh mục không thành công!");
             }
         }
 
@@ -370,6 +434,7 @@ namespace PhanMemQLCafe
         }
 
 
+        //Quản lí bàn
         private void btnAddTable_Click(object sender, EventArgs e)
         {
             string name = txbTableName.Text;
@@ -377,11 +442,11 @@ namespace PhanMemQLCafe
             string status = cbTableStatus.Text;
 
             if (TableDAO.Instance.AddTable(id, name, status))
-            {      
+            {
+                MessageBox.Show("Thêm bàn thành công!");
                 LoadListTable();
                 if (insertTable != null)
                     insertTable(this, new EventArgs());
-                MessageBox.Show("Thêm bàn thành công!");
             }
             else
             {
@@ -394,19 +459,22 @@ namespace PhanMemQLCafe
             string name = txbTableName.Text;
             int id = Convert.ToInt32(txbTableID.Text);
 
-            if (MessageBox.Show("Bạn có muốn cập nhật bàn không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                if (TableDAO.Instance.EditTable(id, name))
+                if (MessageBox.Show("Bạn có muốn cập nhật bàn không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    LoadListTable();
-                    if (updateTable != null)
-                        updateTable(this, new EventArgs());
-                    MessageBox.Show("Cập nhật bàn thành công thành công!");
+                    if (TableDAO.Instance.EditTable(id, name))
+                    {
+                        MessageBox.Show("Cập nhật bàn thành công thành công!");
+                        LoadListTable();
+                        if (updateTable != null)
+                            updateTable(this, new EventArgs());
+                    }
                 }
             }
-            else
+            catch
             {
-                MessageBox.Show("Sửa danh mục không thành công!");
+                MessageBox.Show("Bàn đã tồn tại.\nCập nhật bàn không thành công!");
             }
         }
 
@@ -451,8 +519,44 @@ namespace PhanMemQLCafe
             add { deleteTable += value; }
             remove { deleteTable -= value; }
         }
-        #endregion
 
+
+        //Quản lí tài khoản
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txbUserName.Text;
+            string name = txbDisplayName.Text;
+            int type = (int)nmAccountType.Value;
+
+            InsertAccount(userName, name, type);
+        }
+
+        private void btnEditAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txbUserName.Text;
+            string name = txbDisplayName.Text;
+            int type = (int)nmAccountType.Value;
+
+            UpdateAccount(userName, name, type);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string userName = txbUserName.Text;
+            deleteAccount(userName);
+        }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            string userName = txbUserName.Text;
+            ResetPass(userName);
+        }
+
+        private void btnShowAccount_Click(object sender, EventArgs e)
+        {
+            //null
+        }
+        #endregion
 
     }
 }

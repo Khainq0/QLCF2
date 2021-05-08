@@ -35,7 +35,7 @@ namespace PhanMemQLCafe.DAOModel
         {
             List<Food> list = new List<Food>();
 
-            string query = "SELECT * FROM Food WHERE CategoryID = "+id+"";
+            string query = "SELECT * FROM Food WHERE CategoryID = " + id + "";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -69,7 +69,7 @@ namespace PhanMemQLCafe.DAOModel
 
         public int GetFoodIDByFoodName(string name)
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM Food WHERE Name = N'"+name+"' ");
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM Food WHERE Name = N'" + name + "' ");
 
             if (data.Rows.Count > 0)
             {
@@ -107,15 +107,10 @@ namespace PhanMemQLCafe.DAOModel
 
         public bool EditFood(int foodID, string name, int categoryID, float price)
         {
-            int count = FoodDAO.Instance.CheckExistFoodName(name);
 
-            if (count == 0)
-            {
-                string query = string.Format("UPDATE dbo.Food SET name = N'{0}', CategoryID = {1}, Price = {2} WHERE FoodID = {3}", name, categoryID, price, foodID);
-                int result = DataProvider.Instance.ExecuteNonQuery(query);
-                return result > 0;
-            }
-            return false;      
+            string query = string.Format("UPDATE dbo.Food SET name = N'{0}', CategoryID = {1}, Price = {2} WHERE FoodID = {3}", name, categoryID, price, foodID);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
         }
 
         public bool DeleteFood(int foodID)
@@ -166,7 +161,7 @@ namespace PhanMemQLCafe.DAOModel
 
         public void DeleteFoodByCategoryID(int id)
         {
-            DataProvider.Instance.ExecuteQuery("DELETE FROM dbo.Food WHERE CategoryID = " +id);
+            DataProvider.Instance.ExecuteQuery("DELETE FROM dbo.Food WHERE CategoryID = " + id);
         }
     }
 }
