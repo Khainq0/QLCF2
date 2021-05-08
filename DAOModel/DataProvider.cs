@@ -29,7 +29,7 @@ namespace PhanMemQLCafe.DAOModel
 
         private DataProvider() { }  
 
-        private string connectionStr = "Data Source=DESKTOP-45U2MRR;Initial Catalog=Quanliquancafe;Integrated Security=True"; //Đường truyền SQL server
+        private string connectionStr = "Data Source=ANHHIEU\\SQLEXPRESS;Initial Catalog=Quanliquancafe;Integrated Security=True"; //Đường truyền SQL server
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

@@ -273,6 +273,23 @@ namespace PhanMemQLCafe
             remove { updateFood -= value; }
         }
 
+
+        private void btnAddCategory_Click(object sender, EventArgs e)
+        {
+            string name = txbCategoryName.Text;
+            int categoryID = Convert.ToInt32(txbCategoryID.Text);
+            
+            if (CategoryDAO.Instance.AddCategory(categoryID, name))
+            {
+                MessageBox.Show("Thêm danh mục thành công!");
+                LoadListCategory();
+            }
+            else
+            {
+                MessageBox.Show("Thêm không thành công.\nDanh mục đã tồn tại!");
+            }    
+        }
+
         #endregion
     }
 }

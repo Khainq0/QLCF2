@@ -33,6 +33,7 @@ namespace PhanMemQLCafe
             this.tcAdmin = new System.Windows.Forms.TabControl();
             this.tpBill = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnViewBill = new System.Windows.Forms.Button();
             this.dtpkToday = new System.Windows.Forms.DateTimePicker();
             this.dtpkFromDate = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -40,6 +41,7 @@ namespace PhanMemQLCafe
             this.tpFood = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txbSearchFoodName = new System.Windows.Forms.TextBox();
+            this.btnSearchFood = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.nmFoodPrice = new System.Windows.Forms.NumericUpDown();
@@ -54,6 +56,10 @@ namespace PhanMemQLCafe
             this.txbFoodID = new System.Windows.Forms.TextBox();
             this.lbUserName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnShowFood = new System.Windows.Forms.Button();
+            this.btnEditFood = new System.Windows.Forms.Button();
+            this.btnDeleteFood = new System.Windows.Forms.Button();
+            this.btnAddFood = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtgvFood = new System.Windows.Forms.DataGridView();
             this.tpFoodCategory = new System.Windows.Forms.TabPage();
@@ -67,10 +73,18 @@ namespace PhanMemQLCafe
             this.txbCategoryID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.btnShowCategory = new System.Windows.Forms.Button();
+            this.btnEditCategory = new System.Windows.Forms.Button();
+            this.btnDeleteCategory = new System.Windows.Forms.Button();
+            this.btnAddCategory = new System.Windows.Forms.Button();
             this.tpTable = new System.Windows.Forms.TabPage();
             this.panel20 = new System.Windows.Forms.Panel();
             this.dtgvTable = new System.Windows.Forms.DataGridView();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.btnShowTable = new System.Windows.Forms.Button();
+            this.btnEditTable = new System.Windows.Forms.Button();
+            this.btnDeleteTable = new System.Windows.Forms.Button();
+            this.btnAddTable = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.cbTableStatus = new System.Windows.Forms.ComboBox();
@@ -96,20 +110,6 @@ namespace PhanMemQLCafe
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel28 = new System.Windows.Forms.Panel();
-            this.btnViewBill = new System.Windows.Forms.Button();
-            this.btnSearchFood = new System.Windows.Forms.Button();
-            this.btnShowFood = new System.Windows.Forms.Button();
-            this.btnEditFood = new System.Windows.Forms.Button();
-            this.btnDeleteFood = new System.Windows.Forms.Button();
-            this.btnAddFood = new System.Windows.Forms.Button();
-            this.btnShowCategory = new System.Windows.Forms.Button();
-            this.btnEditCategory = new System.Windows.Forms.Button();
-            this.btnDeleteCategory = new System.Windows.Forms.Button();
-            this.btnAddCategory = new System.Windows.Forms.Button();
-            this.btnShowTable = new System.Windows.Forms.Button();
-            this.btnEditTable = new System.Windows.Forms.Button();
-            this.btnDeleteTable = new System.Windows.Forms.Button();
-            this.btnAddTable = new System.Windows.Forms.Button();
             this.btnShowAccount = new System.Windows.Forms.Button();
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
@@ -174,11 +174,11 @@ namespace PhanMemQLCafe
             // 
             this.tpBill.Controls.Add(this.panel2);
             this.tpBill.Controls.Add(this.panel1);
-            this.tpBill.Location = new System.Drawing.Point(4, 25);
+            this.tpBill.Location = new System.Drawing.Point(4, 21);
             this.tpBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpBill.Name = "tpBill";
             this.tpBill.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpBill.Size = new System.Drawing.Size(816, 494);
+            this.tpBill.Size = new System.Drawing.Size(816, 498);
             this.tpBill.TabIndex = 0;
             this.tpBill.Text = "Doanh thu";
             this.tpBill.UseVisualStyleBackColor = true;
@@ -194,13 +194,30 @@ namespace PhanMemQLCafe
             this.panel2.Size = new System.Drawing.Size(803, 39);
             this.panel2.TabIndex = 1;
             // 
+            // btnViewBill
+            // 
+            this.btnViewBill.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnViewBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewBill.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewBill.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnViewBill.Image = global::PhanMemQLCafe.Properties.Resources.bill_copy;
+            this.btnViewBill.Location = new System.Drawing.Point(349, 2);
+            this.btnViewBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnViewBill.Name = "btnViewBill";
+            this.btnViewBill.Size = new System.Drawing.Size(116, 34);
+            this.btnViewBill.TabIndex = 2;
+            this.btnViewBill.Text = "Thống kê";
+            this.btnViewBill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnViewBill.UseVisualStyleBackColor = false;
+            this.btnViewBill.Click += new System.EventHandler(this.btnViewBill_Click);
+            // 
             // dtpkToday
             // 
             this.dtpkToday.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpkToday.Location = new System.Drawing.Point(471, 11);
             this.dtpkToday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpkToday.Name = "dtpkToday";
-            this.dtpkToday.Size = new System.Drawing.Size(328, 25);
+            this.dtpkToday.Size = new System.Drawing.Size(328, 21);
             this.dtpkToday.TabIndex = 1;
             // 
             // dtpkFromDate
@@ -209,7 +226,7 @@ namespace PhanMemQLCafe
             this.dtpkFromDate.Location = new System.Drawing.Point(3, 11);
             this.dtpkFromDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpkFromDate.Name = "dtpkFromDate";
-            this.dtpkFromDate.Size = new System.Drawing.Size(327, 25);
+            this.dtpkFromDate.Size = new System.Drawing.Size(327, 21);
             this.dtpkFromDate.TabIndex = 0;
             // 
             // panel1
@@ -240,11 +257,11 @@ namespace PhanMemQLCafe
             this.tpFood.Controls.Add(this.panel5);
             this.tpFood.Controls.Add(this.panel4);
             this.tpFood.Controls.Add(this.panel3);
-            this.tpFood.Location = new System.Drawing.Point(4, 25);
+            this.tpFood.Location = new System.Drawing.Point(4, 21);
             this.tpFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpFood.Name = "tpFood";
             this.tpFood.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpFood.Size = new System.Drawing.Size(816, 494);
+            this.tpFood.Size = new System.Drawing.Size(816, 498);
             this.tpFood.TabIndex = 1;
             this.tpFood.Text = "Đồ uống";
             this.tpFood.UseVisualStyleBackColor = true;
@@ -264,8 +281,21 @@ namespace PhanMemQLCafe
             this.txbSearchFoodName.Location = new System.Drawing.Point(125, 14);
             this.txbSearchFoodName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbSearchFoodName.Name = "txbSearchFoodName";
-            this.txbSearchFoodName.Size = new System.Drawing.Size(195, 22);
+            this.txbSearchFoodName.Size = new System.Drawing.Size(195, 19);
             this.txbSearchFoodName.TabIndex = 2;
+            // 
+            // btnSearchFood
+            // 
+            this.btnSearchFood.Image = global::PhanMemQLCafe.Properties.Resources.search;
+            this.btnSearchFood.Location = new System.Drawing.Point(9, 11);
+            this.btnSearchFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSearchFood.Name = "btnSearchFood";
+            this.btnSearchFood.Size = new System.Drawing.Size(93, 33);
+            this.btnSearchFood.TabIndex = 1;
+            this.btnSearchFood.Text = "Tìm kiếm";
+            this.btnSearchFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSearchFood.UseVisualStyleBackColor = true;
+            this.btnSearchFood.Click += new System.EventHandler(this.btnSearchFood_Click);
             // 
             // panel5
             // 
@@ -299,7 +329,7 @@ namespace PhanMemQLCafe
             0,
             0});
             this.nmFoodPrice.Name = "nmFoodPrice";
-            this.nmFoodPrice.Size = new System.Drawing.Size(196, 22);
+            this.nmFoodPrice.Size = new System.Drawing.Size(196, 19);
             this.nmFoodPrice.TabIndex = 2;
             this.nmFoodPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -309,7 +339,7 @@ namespace PhanMemQLCafe
             this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 19);
+            this.label3.Size = new System.Drawing.Size(35, 16);
             this.label3.TabIndex = 0;
             this.label3.Text = "Giá:";
             // 
@@ -329,7 +359,7 @@ namespace PhanMemQLCafe
             this.cbFoodCategory.Location = new System.Drawing.Point(123, 18);
             this.cbFoodCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbFoodCategory.Name = "cbFoodCategory";
-            this.cbFoodCategory.Size = new System.Drawing.Size(195, 24);
+            this.cbFoodCategory.Size = new System.Drawing.Size(195, 20);
             this.cbFoodCategory.TabIndex = 1;
             // 
             // label2
@@ -338,7 +368,7 @@ namespace PhanMemQLCafe
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 19);
+            this.label2.Size = new System.Drawing.Size(81, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "Danh mục:";
             // 
@@ -357,7 +387,7 @@ namespace PhanMemQLCafe
             this.txbFoodName.Location = new System.Drawing.Point(123, 17);
             this.txbFoodName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbFoodName.Name = "txbFoodName";
-            this.txbFoodName.Size = new System.Drawing.Size(195, 22);
+            this.txbFoodName.Size = new System.Drawing.Size(195, 19);
             this.txbFoodName.TabIndex = 1;
             // 
             // label1
@@ -366,7 +396,7 @@ namespace PhanMemQLCafe
             this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 19);
+            this.label1.Size = new System.Drawing.Size(71, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên món:";
             // 
@@ -386,7 +416,7 @@ namespace PhanMemQLCafe
             this.txbFoodID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbFoodID.Name = "txbFoodID";
             this.txbFoodID.ReadOnly = true;
-            this.txbFoodID.Size = new System.Drawing.Size(195, 22);
+            this.txbFoodID.Size = new System.Drawing.Size(195, 19);
             this.txbFoodID.TabIndex = 1;
             this.txbFoodID.TextChanged += new System.EventHandler(this.txbFoodID_TextChanged);
             // 
@@ -396,7 +426,7 @@ namespace PhanMemQLCafe
             this.lbUserName.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUserName.Location = new System.Drawing.Point(3, 22);
             this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(31, 19);
+            this.lbUserName.Size = new System.Drawing.Size(26, 16);
             this.lbUserName.TabIndex = 0;
             this.lbUserName.Text = "ID:";
             // 
@@ -411,6 +441,64 @@ namespace PhanMemQLCafe
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(469, 57);
             this.panel4.TabIndex = 1;
+            // 
+            // btnShowFood
+            // 
+            this.btnShowFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnShowFood.Image = global::PhanMemQLCafe.Properties.Resources.view_file;
+            this.btnShowFood.Location = new System.Drawing.Point(238, 2);
+            this.btnShowFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShowFood.Name = "btnShowFood";
+            this.btnShowFood.Size = new System.Drawing.Size(93, 50);
+            this.btnShowFood.TabIndex = 3;
+            this.btnShowFood.Text = "Xem";
+            this.btnShowFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnShowFood.UseVisualStyleBackColor = false;
+            this.btnShowFood.Click += new System.EventHandler(this.btnShowFood_Click);
+            // 
+            // btnEditFood
+            // 
+            this.btnEditFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnEditFood.Image = global::PhanMemQLCafe.Properties.Resources.correct_document;
+            this.btnEditFood.Location = new System.Drawing.Point(117, 2);
+            this.btnEditFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditFood.Name = "btnEditFood";
+            this.btnEditFood.Size = new System.Drawing.Size(93, 50);
+            this.btnEditFood.TabIndex = 2;
+            this.btnEditFood.Text = "Sửa";
+            this.btnEditFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditFood.UseVisualStyleBackColor = false;
+            this.btnEditFood.Click += new System.EventHandler(this.btnEditFood_Click);
+            // 
+            // btnDeleteFood
+            // 
+            this.btnDeleteFood.BackColor = System.Drawing.Color.LightGray;
+            this.btnDeleteFood.Image = global::PhanMemQLCafe.Properties.Resources.delete_forever1;
+            this.btnDeleteFood.Location = new System.Drawing.Point(360, 2);
+            this.btnDeleteFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteFood.Name = "btnDeleteFood";
+            this.btnDeleteFood.Size = new System.Drawing.Size(93, 50);
+            this.btnDeleteFood.TabIndex = 1;
+            this.btnDeleteFood.Text = "Xóa";
+            this.btnDeleteFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDeleteFood.UseVisualStyleBackColor = false;
+            this.btnDeleteFood.Click += new System.EventHandler(this.btnDeleteFood_Click);
+            // 
+            // btnAddFood
+            // 
+            this.btnAddFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAddFood.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAddFood.Image = global::PhanMemQLCafe.Properties.Resources.add_property3;
+            this.btnAddFood.Location = new System.Drawing.Point(3, 2);
+            this.btnAddFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddFood.Name = "btnAddFood";
+            this.btnAddFood.Size = new System.Drawing.Size(93, 50);
+            this.btnAddFood.TabIndex = 0;
+            this.btnAddFood.Text = "Thêm";
+            this.btnAddFood.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddFood.UseVisualStyleBackColor = false;
+            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
             // panel3
             // 
@@ -440,11 +528,11 @@ namespace PhanMemQLCafe
             this.tpFoodCategory.Controls.Add(this.panel18);
             this.tpFoodCategory.Controls.Add(this.panel11);
             this.tpFoodCategory.Controls.Add(this.panel16);
-            this.tpFoodCategory.Location = new System.Drawing.Point(4, 25);
+            this.tpFoodCategory.Location = new System.Drawing.Point(4, 21);
             this.tpFoodCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpFoodCategory.Name = "tpFoodCategory";
             this.tpFoodCategory.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpFoodCategory.Size = new System.Drawing.Size(816, 494);
+            this.tpFoodCategory.Size = new System.Drawing.Size(816, 498);
             this.tpFoodCategory.TabIndex = 2;
             this.tpFoodCategory.Text = "Danh mục";
             this.tpFoodCategory.UseVisualStyleBackColor = true;
@@ -496,7 +584,7 @@ namespace PhanMemQLCafe
             this.txbCategoryName.Location = new System.Drawing.Point(155, 17);
             this.txbCategoryName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbCategoryName.Name = "txbCategoryName";
-            this.txbCategoryName.Size = new System.Drawing.Size(183, 22);
+            this.txbCategoryName.Size = new System.Drawing.Size(183, 19);
             this.txbCategoryName.TabIndex = 1;
             // 
             // label6
@@ -505,7 +593,7 @@ namespace PhanMemQLCafe
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(0, 22);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 19);
+            this.label6.Size = new System.Drawing.Size(109, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Tên danh mục:";
             // 
@@ -525,7 +613,7 @@ namespace PhanMemQLCafe
             this.txbCategoryID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbCategoryID.Name = "txbCategoryID";
             this.txbCategoryID.ReadOnly = true;
-            this.txbCategoryID.Size = new System.Drawing.Size(183, 22);
+            this.txbCategoryID.Size = new System.Drawing.Size(183, 19);
             this.txbCategoryID.TabIndex = 1;
             // 
             // label7
@@ -534,7 +622,7 @@ namespace PhanMemQLCafe
             this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(3, 22);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 19);
+            this.label7.Size = new System.Drawing.Size(26, 16);
             this.label7.TabIndex = 0;
             this.label7.Text = "ID:";
             // 
@@ -550,16 +638,71 @@ namespace PhanMemQLCafe
             this.panel16.Size = new System.Drawing.Size(447, 57);
             this.panel16.TabIndex = 5;
             // 
+            // btnShowCategory
+            // 
+            this.btnShowCategory.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnShowCategory.Image = global::PhanMemQLCafe.Properties.Resources.view_file;
+            this.btnShowCategory.Location = new System.Drawing.Point(230, 2);
+            this.btnShowCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShowCategory.Name = "btnShowCategory";
+            this.btnShowCategory.Size = new System.Drawing.Size(93, 50);
+            this.btnShowCategory.TabIndex = 3;
+            this.btnShowCategory.Text = "Xem";
+            this.btnShowCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnShowCategory.UseVisualStyleBackColor = false;
+            this.btnShowCategory.Click += new System.EventHandler(this.btnShowCategory_Click);
+            // 
+            // btnEditCategory
+            // 
+            this.btnEditCategory.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnEditCategory.Image = global::PhanMemQLCafe.Properties.Resources.correct_document;
+            this.btnEditCategory.Location = new System.Drawing.Point(116, 2);
+            this.btnEditCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditCategory.Name = "btnEditCategory";
+            this.btnEditCategory.Size = new System.Drawing.Size(93, 50);
+            this.btnEditCategory.TabIndex = 2;
+            this.btnEditCategory.Text = "Sửa";
+            this.btnEditCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditCategory.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteCategory
+            // 
+            this.btnDeleteCategory.Image = global::PhanMemQLCafe.Properties.Resources.delete_forever1;
+            this.btnDeleteCategory.Location = new System.Drawing.Point(342, 2);
+            this.btnDeleteCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteCategory.Name = "btnDeleteCategory";
+            this.btnDeleteCategory.Size = new System.Drawing.Size(93, 50);
+            this.btnDeleteCategory.TabIndex = 1;
+            this.btnDeleteCategory.Text = "Xóa";
+            this.btnDeleteCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            // 
+            // btnAddCategory
+            // 
+            this.btnAddCategory.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAddCategory.ForeColor = System.Drawing.Color.Black;
+            this.btnAddCategory.Image = global::PhanMemQLCafe.Properties.Resources.add_property3;
+            this.btnAddCategory.Location = new System.Drawing.Point(3, 2);
+            this.btnAddCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(93, 50);
+            this.btnAddCategory.TabIndex = 0;
+            this.btnAddCategory.Text = "Thêm";
+            this.btnAddCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddCategory.UseVisualStyleBackColor = false;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
+            // 
             // tpTable
             // 
             this.tpTable.Controls.Add(this.panel20);
             this.tpTable.Controls.Add(this.panel19);
             this.tpTable.Controls.Add(this.panel12);
-            this.tpTable.Location = new System.Drawing.Point(4, 25);
+            this.tpTable.Location = new System.Drawing.Point(4, 21);
             this.tpTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpTable.Name = "tpTable";
             this.tpTable.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpTable.Size = new System.Drawing.Size(816, 494);
+            this.tpTable.Size = new System.Drawing.Size(816, 498);
             this.tpTable.TabIndex = 3;
             this.tpTable.Text = "Bàn";
             this.tpTable.UseVisualStyleBackColor = true;
@@ -597,6 +740,60 @@ namespace PhanMemQLCafe
             this.panel19.Size = new System.Drawing.Size(448, 59);
             this.panel19.TabIndex = 8;
             // 
+            // btnShowTable
+            // 
+            this.btnShowTable.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnShowTable.Image = global::PhanMemQLCafe.Properties.Resources.view_file;
+            this.btnShowTable.Location = new System.Drawing.Point(225, 2);
+            this.btnShowTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShowTable.Name = "btnShowTable";
+            this.btnShowTable.Size = new System.Drawing.Size(93, 50);
+            this.btnShowTable.TabIndex = 4;
+            this.btnShowTable.Text = "Xem";
+            this.btnShowTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnShowTable.UseVisualStyleBackColor = false;
+            // 
+            // btnEditTable
+            // 
+            this.btnEditTable.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnEditTable.Image = global::PhanMemQLCafe.Properties.Resources.correct_document;
+            this.btnEditTable.Location = new System.Drawing.Point(116, 2);
+            this.btnEditTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditTable.Name = "btnEditTable";
+            this.btnEditTable.Size = new System.Drawing.Size(93, 50);
+            this.btnEditTable.TabIndex = 3;
+            this.btnEditTable.Text = "Sửa";
+            this.btnEditTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditTable.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteTable
+            // 
+            this.btnDeleteTable.Image = global::PhanMemQLCafe.Properties.Resources.delete_forever1;
+            this.btnDeleteTable.Location = new System.Drawing.Point(339, 2);
+            this.btnDeleteTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteTable.Name = "btnDeleteTable";
+            this.btnDeleteTable.Size = new System.Drawing.Size(93, 50);
+            this.btnDeleteTable.TabIndex = 2;
+            this.btnDeleteTable.Text = "Xóa";
+            this.btnDeleteTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDeleteTable.UseVisualStyleBackColor = true;
+            // 
+            // btnAddTable
+            // 
+            this.btnAddTable.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAddTable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAddTable.Image = global::PhanMemQLCafe.Properties.Resources.add_property3;
+            this.btnAddTable.Location = new System.Drawing.Point(3, 2);
+            this.btnAddTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddTable.Name = "btnAddTable";
+            this.btnAddTable.Size = new System.Drawing.Size(93, 50);
+            this.btnAddTable.TabIndex = 1;
+            this.btnAddTable.Text = "Thêm";
+            this.btnAddTable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddTable.UseMnemonic = false;
+            this.btnAddTable.UseVisualStyleBackColor = false;
+            // 
             // panel12
             // 
             this.panel12.Controls.Add(this.panel21);
@@ -624,7 +821,7 @@ namespace PhanMemQLCafe
             this.cbTableStatus.Location = new System.Drawing.Point(156, 14);
             this.cbTableStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbTableStatus.Name = "cbTableStatus";
-            this.cbTableStatus.Size = new System.Drawing.Size(183, 24);
+            this.cbTableStatus.Size = new System.Drawing.Size(183, 20);
             this.cbTableStatus.TabIndex = 1;
             // 
             // label8
@@ -633,7 +830,7 @@ namespace PhanMemQLCafe
             this.label8.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 20);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 19);
+            this.label8.Size = new System.Drawing.Size(81, 16);
             this.label8.TabIndex = 0;
             this.label8.Text = "Trạng thái:";
             this.label8.Click += new System.EventHandler(this.label8_Click);
@@ -653,7 +850,7 @@ namespace PhanMemQLCafe
             this.txbTableName.Location = new System.Drawing.Point(156, 17);
             this.txbTableName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbTableName.Name = "txbTableName";
-            this.txbTableName.Size = new System.Drawing.Size(183, 22);
+            this.txbTableName.Size = new System.Drawing.Size(183, 19);
             this.txbTableName.TabIndex = 1;
             // 
             // label4
@@ -662,7 +859,7 @@ namespace PhanMemQLCafe
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(0, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 19);
+            this.label4.Size = new System.Drawing.Size(67, 16);
             this.label4.TabIndex = 0;
             this.label4.Text = "Tên bàn:";
             // 
@@ -682,7 +879,7 @@ namespace PhanMemQLCafe
             this.txbTableID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbTableID.Name = "txbTableID";
             this.txbTableID.ReadOnly = true;
-            this.txbTableID.Size = new System.Drawing.Size(183, 22);
+            this.txbTableID.Size = new System.Drawing.Size(183, 19);
             this.txbTableID.TabIndex = 1;
             // 
             // label5
@@ -691,7 +888,7 @@ namespace PhanMemQLCafe
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 22);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 19);
+            this.label5.Size = new System.Drawing.Size(26, 16);
             this.label5.TabIndex = 0;
             this.label5.Text = "ID:";
             // 
@@ -700,11 +897,11 @@ namespace PhanMemQLCafe
             this.tpAccount.Controls.Add(this.panel29);
             this.tpAccount.Controls.Add(this.panel23);
             this.tpAccount.Controls.Add(this.panel28);
-            this.tpAccount.Location = new System.Drawing.Point(4, 25);
+            this.tpAccount.Location = new System.Drawing.Point(4, 21);
             this.tpAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpAccount.Name = "tpAccount";
             this.tpAccount.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpAccount.Size = new System.Drawing.Size(816, 494);
+            this.tpAccount.Size = new System.Drawing.Size(816, 498);
             this.tpAccount.TabIndex = 4;
             this.tpAccount.Text = "Tài khoản";
             this.tpAccount.UseVisualStyleBackColor = true;
@@ -768,7 +965,7 @@ namespace PhanMemQLCafe
             this.cbAccountType.Location = new System.Drawing.Point(153, 18);
             this.cbAccountType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbAccountType.Name = "cbAccountType";
-            this.cbAccountType.Size = new System.Drawing.Size(185, 24);
+            this.cbAccountType.Size = new System.Drawing.Size(185, 20);
             this.cbAccountType.TabIndex = 1;
             // 
             // label9
@@ -777,7 +974,7 @@ namespace PhanMemQLCafe
             this.label9.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(3, 25);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(125, 19);
+            this.label9.Size = new System.Drawing.Size(109, 16);
             this.label9.TabIndex = 0;
             this.label9.Text = "Loại tài khoản:";
             // 
@@ -796,7 +993,7 @@ namespace PhanMemQLCafe
             this.txbDisplayName.Location = new System.Drawing.Point(153, 17);
             this.txbDisplayName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbDisplayName.Name = "txbDisplayName";
-            this.txbDisplayName.Size = new System.Drawing.Size(185, 22);
+            this.txbDisplayName.Size = new System.Drawing.Size(185, 19);
             this.txbDisplayName.TabIndex = 1;
             // 
             // label11
@@ -805,7 +1002,7 @@ namespace PhanMemQLCafe
             this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(0, 22);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 19);
+            this.label11.Size = new System.Drawing.Size(94, 16);
             this.label11.TabIndex = 0;
             this.label11.Text = "Tên hiển thị:";
             // 
@@ -825,7 +1022,7 @@ namespace PhanMemQLCafe
             this.txbUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.ReadOnly = true;
-            this.txbUserName.Size = new System.Drawing.Size(185, 22);
+            this.txbUserName.Size = new System.Drawing.Size(185, 19);
             this.txbUserName.TabIndex = 1;
             // 
             // label12
@@ -834,7 +1031,7 @@ namespace PhanMemQLCafe
             this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(3, 22);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(121, 19);
+            this.label12.Size = new System.Drawing.Size(105, 16);
             this.label12.TabIndex = 0;
             this.label12.Text = "Tên tài khoản:";
             // 
@@ -849,202 +1046,6 @@ namespace PhanMemQLCafe
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(445, 57);
             this.panel28.TabIndex = 4;
-            // 
-            // btnViewBill
-            // 
-            this.btnViewBill.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnViewBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewBill.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewBill.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnViewBill.Image = global::PhanMemQLCafe.Properties.Resources.bill_copy;
-            this.btnViewBill.Location = new System.Drawing.Point(349, 2);
-            this.btnViewBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnViewBill.Name = "btnViewBill";
-            this.btnViewBill.Size = new System.Drawing.Size(116, 34);
-            this.btnViewBill.TabIndex = 2;
-            this.btnViewBill.Text = "Thống kê";
-            this.btnViewBill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnViewBill.UseVisualStyleBackColor = false;
-            this.btnViewBill.Click += new System.EventHandler(this.btnViewBill_Click);
-            // 
-            // btnSearchFood
-            // 
-            this.btnSearchFood.Image = global::PhanMemQLCafe.Properties.Resources.search;
-            this.btnSearchFood.Location = new System.Drawing.Point(9, 11);
-            this.btnSearchFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSearchFood.Name = "btnSearchFood";
-            this.btnSearchFood.Size = new System.Drawing.Size(93, 33);
-            this.btnSearchFood.TabIndex = 1;
-            this.btnSearchFood.Text = "Tìm kiếm";
-            this.btnSearchFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSearchFood.UseVisualStyleBackColor = true;
-            this.btnSearchFood.Click += new System.EventHandler(this.btnSearchFood_Click);
-            // 
-            // btnShowFood
-            // 
-            this.btnShowFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnShowFood.Image = global::PhanMemQLCafe.Properties.Resources.view_file;
-            this.btnShowFood.Location = new System.Drawing.Point(238, 2);
-            this.btnShowFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShowFood.Name = "btnShowFood";
-            this.btnShowFood.Size = new System.Drawing.Size(93, 50);
-            this.btnShowFood.TabIndex = 3;
-            this.btnShowFood.Text = "Xem";
-            this.btnShowFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnShowFood.UseVisualStyleBackColor = false;
-            this.btnShowFood.Click += new System.EventHandler(this.btnShowFood_Click);
-            // 
-            // btnEditFood
-            // 
-            this.btnEditFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnEditFood.Image = global::PhanMemQLCafe.Properties.Resources.correct_document;
-            this.btnEditFood.Location = new System.Drawing.Point(117, 2);
-            this.btnEditFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnEditFood.Name = "btnEditFood";
-            this.btnEditFood.Size = new System.Drawing.Size(93, 50);
-            this.btnEditFood.TabIndex = 2;
-            this.btnEditFood.Text = "Sửa";
-            this.btnEditFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditFood.UseVisualStyleBackColor = false;
-            this.btnEditFood.Click += new System.EventHandler(this.btnEditFood_Click);
-            // 
-            // btnDeleteFood
-            // 
-            this.btnDeleteFood.BackColor = System.Drawing.Color.LightGray;
-            this.btnDeleteFood.Image = global::PhanMemQLCafe.Properties.Resources.delete_forever1;
-            this.btnDeleteFood.Location = new System.Drawing.Point(360, 2);
-            this.btnDeleteFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDeleteFood.Name = "btnDeleteFood";
-            this.btnDeleteFood.Size = new System.Drawing.Size(93, 50);
-            this.btnDeleteFood.TabIndex = 1;
-            this.btnDeleteFood.Text = "Xóa";
-            this.btnDeleteFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDeleteFood.UseVisualStyleBackColor = false;
-            this.btnDeleteFood.Click += new System.EventHandler(this.btnDeleteFood_Click);
-            // 
-            // btnAddFood
-            // 
-            this.btnAddFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnAddFood.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddFood.Image = global::PhanMemQLCafe.Properties.Resources.add_property3;
-            this.btnAddFood.Location = new System.Drawing.Point(3, 2);
-            this.btnAddFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddFood.Name = "btnAddFood";
-            this.btnAddFood.Size = new System.Drawing.Size(93, 50);
-            this.btnAddFood.TabIndex = 0;
-            this.btnAddFood.Text = "Thêm";
-            this.btnAddFood.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddFood.UseVisualStyleBackColor = false;
-            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
-            // 
-            // btnShowCategory
-            // 
-            this.btnShowCategory.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnShowCategory.Image = global::PhanMemQLCafe.Properties.Resources.view_file;
-            this.btnShowCategory.Location = new System.Drawing.Point(230, 2);
-            this.btnShowCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShowCategory.Name = "btnShowCategory";
-            this.btnShowCategory.Size = new System.Drawing.Size(93, 50);
-            this.btnShowCategory.TabIndex = 3;
-            this.btnShowCategory.Text = "Xem";
-            this.btnShowCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnShowCategory.UseVisualStyleBackColor = false;
-            this.btnShowCategory.Click += new System.EventHandler(this.btnShowCategory_Click);
-            // 
-            // btnEditCategory
-            // 
-            this.btnEditCategory.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnEditCategory.Image = global::PhanMemQLCafe.Properties.Resources.correct_document;
-            this.btnEditCategory.Location = new System.Drawing.Point(116, 2);
-            this.btnEditCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnEditCategory.Name = "btnEditCategory";
-            this.btnEditCategory.Size = new System.Drawing.Size(93, 50);
-            this.btnEditCategory.TabIndex = 2;
-            this.btnEditCategory.Text = "Sửa";
-            this.btnEditCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditCategory.UseVisualStyleBackColor = false;
-            // 
-            // btnDeleteCategory
-            // 
-            this.btnDeleteCategory.Image = global::PhanMemQLCafe.Properties.Resources.delete_forever1;
-            this.btnDeleteCategory.Location = new System.Drawing.Point(342, 2);
-            this.btnDeleteCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDeleteCategory.Name = "btnDeleteCategory";
-            this.btnDeleteCategory.Size = new System.Drawing.Size(93, 50);
-            this.btnDeleteCategory.TabIndex = 1;
-            this.btnDeleteCategory.Text = "Xóa";
-            this.btnDeleteCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDeleteCategory.UseVisualStyleBackColor = true;
-            // 
-            // btnAddCategory
-            // 
-            this.btnAddCategory.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnAddCategory.ForeColor = System.Drawing.Color.Black;
-            this.btnAddCategory.Image = global::PhanMemQLCafe.Properties.Resources.add_property3;
-            this.btnAddCategory.Location = new System.Drawing.Point(3, 2);
-            this.btnAddCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(93, 50);
-            this.btnAddCategory.TabIndex = 0;
-            this.btnAddCategory.Text = "Thêm";
-            this.btnAddCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddCategory.UseVisualStyleBackColor = false;
-            // 
-            // btnShowTable
-            // 
-            this.btnShowTable.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnShowTable.Image = global::PhanMemQLCafe.Properties.Resources.view_file;
-            this.btnShowTable.Location = new System.Drawing.Point(225, 2);
-            this.btnShowTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShowTable.Name = "btnShowTable";
-            this.btnShowTable.Size = new System.Drawing.Size(93, 50);
-            this.btnShowTable.TabIndex = 4;
-            this.btnShowTable.Text = "Xem";
-            this.btnShowTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnShowTable.UseVisualStyleBackColor = false;
-            // 
-            // btnEditTable
-            // 
-            this.btnEditTable.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnEditTable.Image = global::PhanMemQLCafe.Properties.Resources.correct_document;
-            this.btnEditTable.Location = new System.Drawing.Point(116, 2);
-            this.btnEditTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnEditTable.Name = "btnEditTable";
-            this.btnEditTable.Size = new System.Drawing.Size(93, 50);
-            this.btnEditTable.TabIndex = 3;
-            this.btnEditTable.Text = "Sửa";
-            this.btnEditTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditTable.UseVisualStyleBackColor = false;
-            // 
-            // btnDeleteTable
-            // 
-            this.btnDeleteTable.Image = global::PhanMemQLCafe.Properties.Resources.delete_forever1;
-            this.btnDeleteTable.Location = new System.Drawing.Point(339, 2);
-            this.btnDeleteTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDeleteTable.Name = "btnDeleteTable";
-            this.btnDeleteTable.Size = new System.Drawing.Size(93, 50);
-            this.btnDeleteTable.TabIndex = 2;
-            this.btnDeleteTable.Text = "Xóa";
-            this.btnDeleteTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDeleteTable.UseVisualStyleBackColor = true;
-            // 
-            // btnAddTable
-            // 
-            this.btnAddTable.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnAddTable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAddTable.Image = global::PhanMemQLCafe.Properties.Resources.add_property3;
-            this.btnAddTable.Location = new System.Drawing.Point(3, 2);
-            this.btnAddTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddTable.Name = "btnAddTable";
-            this.btnAddTable.Size = new System.Drawing.Size(93, 50);
-            this.btnAddTable.TabIndex = 1;
-            this.btnAddTable.Text = "Thêm";
-            this.btnAddTable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddTable.UseMnemonic = false;
-            this.btnAddTable.UseVisualStyleBackColor = false;
             // 
             // btnShowAccount
             // 

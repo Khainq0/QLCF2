@@ -52,7 +52,7 @@ namespace PhanMemQLCafe.DAOModel
         {
             Category category = null;
 
-            string query = "SELECT * FROM FoodCategory WHERE CategoryID = "+id;
+            string query = "SELECT * FROM FoodCategory WHERE CategoryID = " + id;
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -63,6 +63,52 @@ namespace PhanMemQLCafe.DAOModel
             }
 
             return category;
+        }
+
+        public int GetCategoryIDByCategoryName(string name)
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM FoodCategory WHERE Name = N'"+ name +"' ");
+
+            if (data.Rows.Count > 0)
+            {
+                Category category = new Category(data.Rows[0]);
+                return category.ID;
+            }
+            return -1;
+        }
+
+        public int CheckExistCategoryName(string name)
+        {
+            try
+            {
+                int id = CategoryDAO.Instance.GetCategoryIDByCategoryName(name);
+                return (int)DataProvider.Instance.ExecuteScalar("SELECT COUNT(*) FROM dbo.FoodCategory WHERE CategoryID = " + id + "");
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        public bool AddCategory(int id, string name)
+        {
+            int count = CategoryDAO.Instance.CheckExistCategoryName(name);
+
+            if (count == 0)
+            {
+                string query = string.Format("INSERT INTO dbo.FoodCategory( Name ) VALUES (N'{0}')", name);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            return false;
+        }
+
+        public bool Edit(int id, string name)
+        {
+            string query = string.Format("UPDATE dbo.FoodCategory SET name = N'{0}' WHERE CategoryID = {1}", name, id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
         }
     }
 }
