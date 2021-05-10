@@ -58,7 +58,7 @@
             this.txbUserName.Location = new System.Drawing.Point(119, 18);
             this.txbUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbUserName.Name = "txbUserName";
-            this.txbUserName.Size = new System.Drawing.Size(220, 22);
+            this.txbUserName.Size = new System.Drawing.Size(220, 20);
             this.txbUserName.TabIndex = 1;
             this.txbUserName.Text = "huong";
             // 
@@ -68,7 +68,7 @@
             this.lbUserName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUserName.Location = new System.Drawing.Point(3, 17);
             this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(110, 24);
+            this.lbUserName.Size = new System.Drawing.Size(90, 19);
             this.lbUserName.TabIndex = 0;
             this.lbUserName.Text = "Tài khoản:";
             // 
@@ -87,7 +87,7 @@
             this.txbPassword.Location = new System.Drawing.Point(119, 18);
             this.txbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbPassword.Name = "txbPassword";
-            this.txbPassword.Size = new System.Drawing.Size(220, 22);
+            this.txbPassword.Size = new System.Drawing.Size(220, 20);
             this.txbPassword.TabIndex = 2;
             this.txbPassword.Text = "1111";
             this.txbPassword.UseSystemPasswordChar = true;
@@ -98,7 +98,7 @@
             this.lbPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPassword.Location = new System.Drawing.Point(3, 17);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(107, 24);
+            this.lbPassword.Size = new System.Drawing.Size(87, 19);
             this.lbPassword.TabIndex = 0;
             this.lbPassword.Text = "Mật Khẩu:";
             // 
@@ -154,7 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.SaddleBrown;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(523, 201);
+            this.ClientSize = new System.Drawing.Size(525, 209);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.panel2);

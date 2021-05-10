@@ -112,11 +112,24 @@ namespace PhanMemQLCafe.DAOModel
 
         public bool DeleteCategory(int id)
         {
+            BillInfoDAO.Instance.DeleteBillInfoByCategoryID(id);
             FoodDAO.Instance.DeleteFoodByCategoryID(id);
             string query = string.Format("DELETE FROM dbo.FoodCategory WHERE CategoryID = {0}", id);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
+        }
+
+        public int CheckExistBillIDNotCheckOutIfDeleteCategory(int id)
+        {
+            try
+            {
+                return (int)DataProvider.Instance.ExecuteScalar("SELECT COUNT(*) FROM dbo.Food AS f, dbo.BillInfo AS bi, dbo.Bill AS b, dbo.FoodTable AS t WHERE f.CategoryID = "+id+" AND f.FoodID = bi.FoodID AND bi.BillID = b.BillID AND b.Status = 0 AND t.status = N'Đã có người'");
+            }
+            catch
+            {
+                return -1;
+            }
         }
     }
 }

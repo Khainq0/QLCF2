@@ -394,22 +394,31 @@ namespace PhanMemQLCafe
         {
             int id = Convert.ToInt32(txbCategoryID.Text);
 
-            if (MessageBox.Show("Bạn có muốn xóa danh mục không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            int check = CategoryDAO.Instance.CheckExistBillIDNotCheckOutIfDeleteCategory(id);
+
+            if (check == 0)
             {
-                if (CategoryDAO.Instance.DeleteCategory(id))
+                if (MessageBox.Show("Bạn có muốn xóa danh mục không?", "Thông báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    MessageBox.Show("Xóa danh mục thành công!");
-                    LoadListCategory();
-                    LoadCategoryIntoCombobox(cbFoodCategory);
-                    LoadListFood();
-                    if (deleteCategory != null)
-                        deleteCategory(this, new EventArgs());
-                }
-                else
-                {
-                    MessageBox.Show("Xóa danh mục không thành công!");
+                    if (CategoryDAO.Instance.DeleteCategory(id))
+                    {
+                        MessageBox.Show("Xóa danh mục thành công!");
+                        LoadListCategory();
+                        LoadCategoryIntoCombobox(cbFoodCategory);
+                        LoadListFood();
+                        if (deleteCategory != null)
+                            deleteCategory(this, new EventArgs());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa danh mục không thành công!");
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Đang có bàn sử dụng món ăn trong danh mục này.\nCần thanh toán trước khi xóa!");
+            }    
         }
 
         private event EventHandler insertCategory;
