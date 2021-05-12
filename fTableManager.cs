@@ -284,7 +284,7 @@ namespace PhanMemQLCafe
             }
             else
             {
-                MessageBox.Show("Bạn phải chọn bàn trước khi đặt món?", "Thông báo!", MessageBoxButtons.OKCancel);
+                MessageBox.Show("Bạn phải chọn bàn trước khi đặt món?");
             }
         }
         
