@@ -87,12 +87,12 @@ namespace PhanMemQLCafe
                 switch (item.Status)
                 {
                     case "Trống":
-                        btn.BackColor = Color.Aqua;
-                        //btn.Image = Image.FromFile("C:\\Users\\ADMIN\\Documents\\Study\\Hoc_Ki_6\\Thuc_Tap_Nhom\\MyProject\\QLCF\\Resources\\dinner-table.png");
+                        //btn.BackColor = Color.Aqua;
+                        btn.Image = Image.FromFile("C:\\Users\\ADMIN\\Documents\\Study\\Hoc_Ki_6\\Thuc_Tap_Nhom\\MyProject\\QLCF\\Resources\\dinner-table.png");
                         break;
                     default:
-                        btn.BackColor = Color.IndianRed;
-                        //btn.Image = Image.FromFile("C:\\Users\\ADMIN\\Documents\\Study\\Hoc_Ki_6\\Thuc_Tap_Nhom\\MyProject\\QLCF\\Resources\\guest.png");
+                        //btn.BackColor = Color.IndianRed;
+                        btn.Image = Image.FromFile("C:\\Users\\ADMIN\\Documents\\Study\\Hoc_Ki_6\\Thuc_Tap_Nhom\\MyProject\\QLCF\\Resources\\guest.png");
                         break;
                 }
 
@@ -175,16 +175,22 @@ namespace PhanMemQLCafe
         private void f_DeleteTable(object sender, EventArgs e)
         {
             LoadTable();
+            //new
+            LoadComboboxTable(cbSwitchTable);
         }
 
         private void f_UpdateTable(object sender, EventArgs e)
         {
             LoadTable();
+            //new
+            LoadComboboxTable(cbSwitchTable);
         }
 
         private void f_InsertTable(object sender, EventArgs e)
         {
             LoadTable();
+            //new
+            LoadComboboxTable(cbSwitchTable);
         }
 
         private void f_DeleteCategory(object sender, EventArgs e)
@@ -254,6 +260,10 @@ namespace PhanMemQLCafe
                 int foodID = (cbFood.SelectedItem as Food).ID;
 
                 int count = (int)nmFoodCount.Value;
+                if(count <= 0)
+                {
+                    count = 1;
+                }    
 
                 if (billID == -1)
                 {
@@ -324,26 +334,30 @@ namespace PhanMemQLCafe
             }
         }
 
-        private void lvBill_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //
-        }
-
         private void btnSwitchTable_Click(object sender, EventArgs e)
         {
-            int tableiD1 = (lvBill.Tag as Table).ID;
-
-            int tableID2 = (cbSwitchTable.SelectedItem as Table).ID;
-
-            if (MessageBox.Show(String.Format("Bạn muốn chuyển bàn {0} qua bàn {1}?", (lvBill.Tag as Table).Name, (cbSwitchTable.SelectedItem as Table).Name), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                TableDAO.Instance.SwitchTable(tableiD1, tableID2);
+                int tableiD1 = (lvBill.Tag as Table).ID;
 
-                LoadTable();
-            } 
+                int tableID2 = (cbSwitchTable.SelectedItem as Table).ID;
+
+                if (MessageBox.Show(String.Format("Bạn muốn chuyển bàn {0} qua bàn {1}?", (lvBill.Tag as Table).Name, (cbSwitchTable.SelectedItem as Table).Name), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    TableDAO.Instance.SwitchTable(tableiD1, tableID2);
+
+                    LoadTable();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Chưa chọn bàn để chuyển?");
+            }
         }
 
         #endregion
+
+        #region tenmp
 
         private void flpTable_Paint(object sender, PaintEventArgs e)
         {
@@ -354,5 +368,17 @@ namespace PhanMemQLCafe
         {
 
         }
+
+        private void nmFoodCount_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvBill_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //
+        }
+
+        #endregion
     }
 }

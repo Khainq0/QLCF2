@@ -87,7 +87,7 @@ namespace PhanMemQLCafe
             this.btnAddTable = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.cbTableStatus = new System.Windows.Forms.ComboBox();
+            this.txbTableStatus = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.txbTableName = new System.Windows.Forms.TextBox();
@@ -101,6 +101,7 @@ namespace PhanMemQLCafe
             this.panel23 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.nmAccountType = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
             this.txbDisplayName = new System.Windows.Forms.TextBox();
@@ -113,7 +114,7 @@ namespace PhanMemQLCafe
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.nmAccountType = new System.Windows.Forms.NumericUpDown();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -150,10 +151,10 @@ namespace PhanMemQLCafe
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.panel23.SuspendLayout();
             this.panel24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmAccountType)).BeginInit();
             this.panel26.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmAccountType)).BeginInit();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -814,7 +815,7 @@ namespace PhanMemQLCafe
             // 
             // panel21
             // 
-            this.panel21.Controls.Add(this.cbTableStatus);
+            this.panel21.Controls.Add(this.txbTableStatus);
             this.panel21.Controls.Add(this.label8);
             this.panel21.Location = new System.Drawing.Point(3, 133);
             this.panel21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -822,14 +823,13 @@ namespace PhanMemQLCafe
             this.panel21.Size = new System.Drawing.Size(343, 59);
             this.panel21.TabIndex = 3;
             // 
-            // cbTableStatus
+            // txbTableStatus
             // 
-            this.cbTableStatus.FormattingEnabled = true;
-            this.cbTableStatus.Location = new System.Drawing.Point(156, 14);
-            this.cbTableStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbTableStatus.Name = "cbTableStatus";
-            this.cbTableStatus.Size = new System.Drawing.Size(183, 20);
-            this.cbTableStatus.TabIndex = 1;
+            this.txbTableStatus.Location = new System.Drawing.Point(156, 20);
+            this.txbTableStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbTableStatus.Name = "txbTableStatus";
+            this.txbTableStatus.Size = new System.Drawing.Size(183, 19);
+            this.txbTableStatus.TabIndex = 2;
             // 
             // label8
             // 
@@ -888,6 +888,7 @@ namespace PhanMemQLCafe
             this.txbTableID.ReadOnly = true;
             this.txbTableID.Size = new System.Drawing.Size(183, 19);
             this.txbTableID.TabIndex = 1;
+            this.txbTableID.TextChanged += new System.EventHandler(this.txbTableID_TextChanged);
             // 
             // label5
             // 
@@ -966,6 +967,13 @@ namespace PhanMemQLCafe
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(343, 59);
             this.panel24.TabIndex = 4;
+            // 
+            // nmAccountType
+            // 
+            this.nmAccountType.Location = new System.Drawing.Point(153, 20);
+            this.nmAccountType.Name = "nmAccountType";
+            this.nmAccountType.Size = new System.Drawing.Size(49, 19);
+            this.nmAccountType.TabIndex = 1;
             // 
             // label9
             // 
@@ -1100,13 +1108,6 @@ namespace PhanMemQLCafe
             this.btnAddAccount.UseVisualStyleBackColor = false;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // nmAccountType
-            // 
-            this.nmAccountType.Location = new System.Drawing.Point(153, 20);
-            this.nmAccountType.Name = "nmAccountType";
-            this.nmAccountType.Size = new System.Drawing.Size(49, 19);
-            this.nmAccountType.TabIndex = 1;
-            // 
             // fAdmin
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1166,12 +1167,12 @@ namespace PhanMemQLCafe
             this.panel23.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
             this.panel24.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmAccountType)).EndInit();
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
             this.panel27.ResumeLayout(false);
             this.panel27.PerformLayout();
             this.panel28.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nmAccountType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1243,7 +1244,6 @@ namespace PhanMemQLCafe
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.TextBox txbTableID;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbTableStatus;
         private System.Windows.Forms.Panel panel29;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Panel panel24;
@@ -1262,5 +1262,7 @@ namespace PhanMemQLCafe
         private System.Windows.Forms.DataGridView dtgvAccount;
         private System.Windows.Forms.Button btnResetPassword;
         private System.Windows.Forms.NumericUpDown nmAccountType;
+        private System.Windows.Forms.TextBox txbTableStatus;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

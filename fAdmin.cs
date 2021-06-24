@@ -42,7 +42,7 @@ namespace PhanMemQLCafe
             dtgvTable.DataSource = tableList;
             LoadListTable();
             AddTableBinding();
-            LoadTableStatusIntoCombobox(cbTableStatus);
+            //LoadTableStatusIntoCombobox(txbTableStatus);
 
             //account
             dtgvAccount.DataSource = accountList;
@@ -72,11 +72,11 @@ namespace PhanMemQLCafe
             cb.DisplayMember = "Name";
         }
 
-        void LoadTableStatusIntoCombobox(ComboBox cb)
-        {
-            cbTableStatus.DataSource = TableDAO.Instance.GetListTable();
-            cb.DisplayMember = "Status";
-        }
+        //void LoadTableStatusIntoCombobox(ComboBox cb)
+        //{
+        //    cbTableStatus.DataSource = TableDAO.Instance.GetListTable();
+        //    cb.DisplayMember = "Status";
+        //}
 
         void AddAccountBinding()
         {
@@ -89,6 +89,7 @@ namespace PhanMemQLCafe
         {
             txbTableID.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "ID", true, DataSourceUpdateMode.Never));
             txbTableName.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "Name", true, DataSourceUpdateMode.Never));
+            txbTableStatus.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "Status", true, DataSourceUpdateMode.Never));
         }
 
         void AddCategoryBinding()
@@ -102,6 +103,35 @@ namespace PhanMemQLCafe
             txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
             txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
             nmFoodPrice.DataBindings.Add(new Binding("value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
+        }
+
+        private void txbFoodID_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgvFood.SelectedCells.Count > 0)
+                {
+                    int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
+
+                    Category cateogory = CategoryDAO.Instance.GetCategoryNameByID(id);
+
+                    cbFoodCategory.SelectedItem = cateogory;
+
+                    int index = -1;
+                    int i = 0;
+                    foreach (Category item in cbFoodCategory.Items)
+                    {
+                        if (item.ID == cateogory.ID)
+                        {
+                            index = i;
+                            break;
+                        }
+                        i++;
+                    }
+                    cbFoodCategory.SelectedIndex = index;
+                }
+            }
+            catch { }
         }
 
         void LoadDateTimePickerBill()
@@ -220,35 +250,6 @@ namespace PhanMemQLCafe
         private void dtgvFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //
-        }
-
-        private void txbFoodID_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dtgvFood.SelectedCells.Count > 0)
-                {
-                    int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
-
-                    Category cateogory = CategoryDAO.Instance.GetCategoryNameByID(id);
-
-                    cbFoodCategory.SelectedItem = cateogory;
-
-                    int index = -1;
-                    int i = 0;
-                    foreach (Category item in cbFoodCategory.Items)
-                    {
-                        if (item.ID == cateogory.ID)
-                        {
-                            index = i;
-                            break;
-                        }
-                        i++;
-                    }
-                    cbFoodCategory.SelectedIndex = index;
-                }
-            }
-            catch { }
         }
 
 
@@ -448,7 +449,7 @@ namespace PhanMemQLCafe
         {
             string name = txbTableName.Text;
             int id = Convert.ToInt32(txbTableID.Text);
-            string status = cbTableStatus.Text;
+            string status = txbTableStatus.Text;
 
             if (TableDAO.Instance.AddTable(id, name, status))
             {
@@ -565,7 +566,11 @@ namespace PhanMemQLCafe
         {
             //null
         }
-        #endregion
 
+        private void txbTableID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

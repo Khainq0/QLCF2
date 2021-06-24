@@ -32,29 +32,29 @@ namespace PhanMemQLCafe
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fTableManager));
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thôngTinTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thôngTinCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lvBill = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.STT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
             this.nmFoodCount = new System.Windows.Forms.NumericUpDown();
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.btnAddFood = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txbTotalPrice = new System.Windows.Forms.TextBox();
             this.cbSwitchTable = new System.Windows.Forms.ComboBox();
             this.btnSwitchTable = new System.Windows.Forms.Button();
             this.nmDisCount = new System.Windows.Forms.NumericUpDown();
             this.btnDisCount = new System.Windows.Forms.Button();
-            this.STT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCheckOut = new System.Windows.Forms.Button();
-            this.btnAddFood = new System.Windows.Forms.Button();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thôngTinTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thôngTinCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -84,9 +84,55 @@ namespace PhanMemQLCafe
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1156, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1158, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // adminToolStripMenuItem
+            // 
+            this.adminToolStripMenuItem.BackColor = System.Drawing.Color.SaddleBrown;
+            this.adminToolStripMenuItem.Checked = true;
+            this.adminToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.adminToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.adminToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.adminToolStripMenuItem.Image = global::PhanMemQLCafe.Properties.Resources.user_male_circle__1_;
+            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
+            this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
+            // 
+            // thôngTinTàiKhoảnToolStripMenuItem
+            // 
+            this.thôngTinTàiKhoảnToolStripMenuItem.BackColor = System.Drawing.Color.SaddleBrown;
+            this.thôngTinTàiKhoảnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thôngTinCáNhânToolStripMenuItem,
+            this.đăngXuấtToolStripMenuItem});
+            this.thôngTinTàiKhoảnToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.thôngTinTàiKhoảnToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.thôngTinTàiKhoảnToolStripMenuItem.Image = global::PhanMemQLCafe.Properties.Resources.edit_user__1_;
+            this.thôngTinTàiKhoảnToolStripMenuItem.Name = "thôngTinTàiKhoảnToolStripMenuItem";
+            this.thôngTinTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
+            this.thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản";
+            // 
+            // thôngTinCáNhânToolStripMenuItem
+            // 
+            this.thôngTinCáNhânToolStripMenuItem.BackColor = System.Drawing.Color.SaddleBrown;
+            this.thôngTinCáNhânToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.thôngTinCáNhânToolStripMenuItem.Image = global::PhanMemQLCafe.Properties.Resources.user_male_circle__1_;
+            this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
+            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
+            this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
+            // 
+            // đăngXuấtToolStripMenuItem
+            // 
+            this.đăngXuấtToolStripMenuItem.BackColor = System.Drawing.Color.SaddleBrown;
+            this.đăngXuấtToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.đăngXuấtToolStripMenuItem.Image = global::PhanMemQLCafe.Properties.Resources.logout_rounded_down;
+            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -144,6 +190,11 @@ namespace PhanMemQLCafe
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader4.Width = 132;
             // 
+            // STT
+            // 
+            this.STT.DisplayIndex = 0;
+            this.STT.Width = 10;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.nmFoodCount);
@@ -166,7 +217,7 @@ namespace PhanMemQLCafe
             0,
             -2147483648});
             this.nmFoodCount.Name = "nmFoodCount";
-            this.nmFoodCount.Size = new System.Drawing.Size(84, 22);
+            this.nmFoodCount.Size = new System.Drawing.Size(84, 20);
             this.nmFoodCount.TabIndex = 3;
             this.nmFoodCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nmFoodCount.Value = new decimal(new int[] {
@@ -174,6 +225,7 @@ namespace PhanMemQLCafe
             0,
             0,
             0});
+            this.nmFoodCount.ValueChanged += new System.EventHandler(this.nmFoodCount_ValueChanged);
             // 
             // cbFood
             // 
@@ -182,7 +234,7 @@ namespace PhanMemQLCafe
             this.cbFood.Location = new System.Drawing.Point(3, 33);
             this.cbFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbFood.Name = "cbFood";
-            this.cbFood.Size = new System.Drawing.Size(281, 26);
+            this.cbFood.Size = new System.Drawing.Size(281, 23);
             this.cbFood.TabIndex = 1;
             // 
             // cbCategory
@@ -192,9 +244,27 @@ namespace PhanMemQLCafe
             this.cbCategory.Location = new System.Drawing.Point(3, 2);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(281, 26);
+            this.cbCategory.Size = new System.Drawing.Size(281, 23);
             this.cbCategory.TabIndex = 0;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
+            // 
+            // btnAddFood
+            // 
+            this.btnAddFood.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnAddFood.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddFood.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddFood.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btnAddFood.Image = global::PhanMemQLCafe.Properties.Resources.order__1_;
+            this.btnAddFood.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAddFood.Location = new System.Drawing.Point(291, 4);
+            this.btnAddFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddFood.Name = "btnAddFood";
+            this.btnAddFood.Size = new System.Drawing.Size(128, 55);
+            this.btnAddFood.TabIndex = 2;
+            this.btnAddFood.Text = "THÊM MÓN";
+            this.btnAddFood.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAddFood.UseVisualStyleBackColor = false;
+            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
             // panel1
             // 
@@ -217,7 +287,7 @@ namespace PhanMemQLCafe
             this.txbTotalPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbTotalPrice.Name = "txbTotalPrice";
             this.txbTotalPrice.ReadOnly = true;
-            this.txbTotalPrice.Size = new System.Drawing.Size(136, 25);
+            this.txbTotalPrice.Size = new System.Drawing.Size(136, 21);
             this.txbTotalPrice.TabIndex = 9;
             this.txbTotalPrice.Text = "0";
             this.txbTotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -230,7 +300,7 @@ namespace PhanMemQLCafe
             this.cbSwitchTable.Location = new System.Drawing.Point(3, 34);
             this.cbSwitchTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbSwitchTable.Name = "cbSwitchTable";
-            this.cbSwitchTable.Size = new System.Drawing.Size(124, 26);
+            this.cbSwitchTable.Size = new System.Drawing.Size(124, 23);
             this.cbSwitchTable.TabIndex = 4;
             this.cbSwitchTable.SelectedIndexChanged += new System.EventHandler(this.cbSwitchTable_SelectedIndexChanged);
             // 
@@ -253,7 +323,7 @@ namespace PhanMemQLCafe
             this.nmDisCount.Location = new System.Drawing.Point(133, 38);
             this.nmDisCount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmDisCount.Name = "nmDisCount";
-            this.nmDisCount.Size = new System.Drawing.Size(113, 22);
+            this.nmDisCount.Size = new System.Drawing.Size(113, 20);
             this.nmDisCount.TabIndex = 6;
             this.nmDisCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -269,11 +339,6 @@ namespace PhanMemQLCafe
             this.btnDisCount.TabIndex = 7;
             this.btnDisCount.Text = "Giảm giá";
             this.btnDisCount.UseVisualStyleBackColor = false;
-            // 
-            // STT
-            // 
-            this.STT.DisplayIndex = 0;
-            this.STT.Width = 10;
             // 
             // btnCheckOut
             // 
@@ -294,75 +359,11 @@ namespace PhanMemQLCafe
             this.btnCheckOut.UseVisualStyleBackColor = false;
             this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
-            // btnAddFood
-            // 
-            this.btnAddFood.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnAddFood.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAddFood.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddFood.ForeColor = System.Drawing.Color.GhostWhite;
-            this.btnAddFood.Image = global::PhanMemQLCafe.Properties.Resources.order__1_;
-            this.btnAddFood.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAddFood.Location = new System.Drawing.Point(291, 4);
-            this.btnAddFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddFood.Name = "btnAddFood";
-            this.btnAddFood.Size = new System.Drawing.Size(128, 55);
-            this.btnAddFood.TabIndex = 2;
-            this.btnAddFood.Text = "THÊM MÓN";
-            this.btnAddFood.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddFood.UseVisualStyleBackColor = false;
-            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
-            // 
-            // adminToolStripMenuItem
-            // 
-            this.adminToolStripMenuItem.BackColor = System.Drawing.Color.SaddleBrown;
-            this.adminToolStripMenuItem.Checked = true;
-            this.adminToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.adminToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.adminToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.adminToolStripMenuItem.Image = global::PhanMemQLCafe.Properties.Resources.user_male_circle__1_;
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
-            this.adminToolStripMenuItem.Text = "Admin";
-            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
-            // 
-            // thôngTinTàiKhoảnToolStripMenuItem
-            // 
-            this.thôngTinTàiKhoảnToolStripMenuItem.BackColor = System.Drawing.Color.SaddleBrown;
-            this.thôngTinTàiKhoảnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thôngTinCáNhânToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem});
-            this.thôngTinTàiKhoảnToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.thôngTinTàiKhoảnToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.thôngTinTàiKhoảnToolStripMenuItem.Image = global::PhanMemQLCafe.Properties.Resources.edit_user__1_;
-            this.thôngTinTàiKhoảnToolStripMenuItem.Name = "thôngTinTàiKhoảnToolStripMenuItem";
-            this.thôngTinTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(178, 24);
-            this.thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản";
-            // 
-            // thôngTinCáNhânToolStripMenuItem
-            // 
-            this.thôngTinCáNhânToolStripMenuItem.BackColor = System.Drawing.Color.SaddleBrown;
-            this.thôngTinCáNhânToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.thôngTinCáNhânToolStripMenuItem.Image = global::PhanMemQLCafe.Properties.Resources.user_male_circle__1_;
-            this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
-            this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
-            // 
-            // đăngXuấtToolStripMenuItem
-            // 
-            this.đăngXuấtToolStripMenuItem.BackColor = System.Drawing.Color.SaddleBrown;
-            this.đăngXuấtToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.đăngXuấtToolStripMenuItem.Image = global::PhanMemQLCafe.Properties.Resources.logout_rounded_down;
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
-            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
-            // 
             // fTableManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.SaddleBrown;
-            this.ClientSize = new System.Drawing.Size(1156, 619);
+            this.ClientSize = new System.Drawing.Size(1158, 627);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
