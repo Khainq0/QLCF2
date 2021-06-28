@@ -82,7 +82,6 @@ namespace PhanMemQLCafe.DAOModel
         public void InsertBill(int id)
         {
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @TableID , member2", new object[] { id });
-            
         }
 
         public int GetMaxBill()
