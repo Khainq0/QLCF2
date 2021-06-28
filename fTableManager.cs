@@ -260,10 +260,10 @@ namespace PhanMemQLCafe
                 int foodID = (cbFood.SelectedItem as Food).ID;
 
                 int count = (int)nmFoodCount.Value;
-                if(count <= 0)
-                {
-                    count = 1;
-                }    
+                //if(count <= 0)
+                //{
+                //    count = 1;
+                //}    
 
                 if (billID == -1)
                 {
@@ -272,20 +272,42 @@ namespace PhanMemQLCafe
                 }
                 else if (billStatus == 0 && tableStatus == "Trống")
                 {
-                    BillInfoDAO.Instance.InsertBillInfo(foodID, billID, count);
+                    if (count <= 0)
+                    {
+                        MessageBox.Show("Số lượng món ăn không hợp lệ!");
+                    }
+                    else
+                        BillInfoDAO.Instance.InsertBillInfo(foodID, billID, count);
                 }
                 else if (billStatus == 0 && tableStatus == "Đã có người")
                 {
-                    BillInfoDAO.Instance.InsertBillInfo(foodID, billID, count);
+                    if (count <= 0 && BillInfoDAO.Instance.GetCountFoodOld(billID, foodID) + count < 0)
+                    {
+                        MessageBox.Show("Số lượng món ăn không hợp lệ!");
+                    }
+                    else
+                        BillInfoDAO.Instance.InsertBillInfo(foodID, billID, count);
                 }
                 else if (billStatus == 1 && tableStatus == "Trống")
                 {
-                    BillDAO.Instance.InsertBill(table.ID);
-                    BillInfoDAO.Instance.InsertBillInfo(foodID, BillDAO.Instance.GetMaxBill(), count);
+                    if (count <= 0)
+                    {
+                        MessageBox.Show("Số lượng món ăn không hợp lệ!");
+                    }  
+                    else
+                    {
+                        BillDAO.Instance.InsertBill(table.ID);
+                        BillInfoDAO.Instance.InsertBillInfo(foodID, BillDAO.Instance.GetMaxBill(), count);
+                    }     
                 }
                 else if (billStatus == 1 && tableStatus == "Đã có người")
                 {
-                    BillInfoDAO.Instance.InsertBillInfo(foodID, BillDAO.Instance.GetMaxBill(), count);
+                    if (count <= 0 && BillInfoDAO.Instance.GetCountFoodOld(BillDAO.Instance.GetMaxBill(), foodID) + count < 0)
+                    {
+                        MessageBox.Show("Số lượng món ăn không hợp lệ!");
+                    } 
+                    else
+                        BillInfoDAO.Instance.InsertBillInfo(foodID, BillDAO.Instance.GetMaxBill(), count);
                 }
 
                 ShowBill(table.ID);

@@ -203,7 +203,7 @@ namespace PhanMemQLCafe
             this.btnViewBill.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewBill.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnViewBill.Image = global::PhanMemQLCafe.Properties.Resources.bill_copy;
-            this.btnViewBill.Location = new System.Drawing.Point(349, 2);
+            this.btnViewBill.Location = new System.Drawing.Point(353, 2);
             this.btnViewBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewBill.Name = "btnViewBill";
             this.btnViewBill.Size = new System.Drawing.Size(116, 34);
@@ -216,10 +216,10 @@ namespace PhanMemQLCafe
             // dtpkToday
             // 
             this.dtpkToday.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkToday.Location = new System.Drawing.Point(471, 11);
+            this.dtpkToday.Location = new System.Drawing.Point(509, 11);
             this.dtpkToday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpkToday.Name = "dtpkToday";
-            this.dtpkToday.Size = new System.Drawing.Size(328, 21);
+            this.dtpkToday.Size = new System.Drawing.Size(290, 21);
             this.dtpkToday.TabIndex = 1;
             // 
             // dtpkFromDate
@@ -228,7 +228,7 @@ namespace PhanMemQLCafe
             this.dtpkFromDate.Location = new System.Drawing.Point(3, 11);
             this.dtpkFromDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpkFromDate.Name = "dtpkFromDate";
-            this.dtpkFromDate.Size = new System.Drawing.Size(327, 21);
+            this.dtpkFromDate.Size = new System.Drawing.Size(305, 21);
             this.dtpkFromDate.TabIndex = 0;
             // 
             // panel1

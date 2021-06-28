@@ -45,6 +45,17 @@ namespace PhanMemQLCafe.DAOModel
             return listBillInfo;
         }
 
+        public int GetCountFoodOld(int billID, int foodID)
+        {
+            try
+            {
+                return (int)DataProvider.Instance.ExecuteScalar("SELECT Count FROM BillInfo where BillID = "+billID+" and FoodID = "+foodID+"");
+            }
+            catch
+            {
+                return -1;
+            }
+        }
         public void InsertBillInfo(int foodID, int billID, int count)
         {
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBillInfo @FoodID , @BillID , @Count", new object[] { foodID , billID , count });
